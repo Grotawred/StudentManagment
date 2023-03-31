@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}"/>
+</head>
+<body>
+
+<div class="face">
+    <div class="band">
+        <div class="blue"></div>
+        <div class="yellow"></div>
+    </div>
+    <div class="eyes"></div>
+    <div class="dimples"></div>
+    <div class="mouth"></div>
+</div>
+
+<h1>Oops! Something went wrong!</h1>
+<div th:each="errorMessage: ${errorMessage}" align="center">
+    <p th:text="${errorMessage}"></p>
+</div>
+<br>
+<div class="col-lg-3" align="center">
+    <a th:href="@{/students}" class="btn btn-primary btn-sm mb-3">Return</a>
+</div>
+</body>
+</html>

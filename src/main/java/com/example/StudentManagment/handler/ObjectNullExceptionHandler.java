@@ -11,7 +11,7 @@ public class ObjectNullExceptionHandler extends ResponseEntityExceptionHandler {
     public ModelAndView handleNameNotValidException(ObjectNullException ex) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errorMessage", ex.getMessage());
-        modelAndView.setViewName("redirect:/students/new?error2");
+        modelAndView.setViewName("errorPage");
         return modelAndView;
     }
 }

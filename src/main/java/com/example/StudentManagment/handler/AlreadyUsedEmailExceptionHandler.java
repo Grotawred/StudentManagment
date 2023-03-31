@@ -11,7 +11,7 @@ public class AlreadyUsedEmailExceptionHandler extends ResponseEntityExceptionHan
     public ModelAndView handleAlreadyUsedException(AlereadyUsedEmailException ex) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errorMessage", ex.getMessage());
-        modelAndView.setViewName("redirect:/students/new?error1");
+        modelAndView.setViewName("errorPage");
         return modelAndView;
     }
 }

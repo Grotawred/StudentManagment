@@ -11,7 +11,7 @@ public class NameNotAllowedExceptionHandler extends ResponseEntityExceptionHandl
     public ModelAndView handleNameNotAllowedException(NameNotAllowedException ex) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errorMessage", ex.getMessage());
-        modelAndView.setViewName("redirect:/students/new?error");
+        modelAndView.setViewName("errorPage");
         return modelAndView;
     }
 }
