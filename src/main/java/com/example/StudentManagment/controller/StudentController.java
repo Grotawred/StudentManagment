@@ -8,10 +8,7 @@ import com.example.StudentManagment.validator.ValidateNullable;
 import com.example.StudentManagment.validator.Validator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,10 +25,10 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-
     @GetMapping("/students")
     public String listStudents(Model model) {
         model.addAttribute("students", studentService.getAllStudents());
+        model.addAttribute("student", new Student());
         return "students";
     }
 
