@@ -2,28 +2,20 @@ package com.example.StudentManagment.controller;
 
 import com.example.StudentManagment.entities.Student;
 import com.example.StudentManagment.service.StudentService;
-import com.example.StudentManagment.validator.ValidateAlredyUsedEmail;
-import com.example.StudentManagment.validator.ValidateNotAllowedWords;
-import com.example.StudentManagment.validator.ValidateNullable;
-import com.example.StudentManagment.validator.Validator;
+import com.example.StudentManagment.service.ValidatorService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedList;
-import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class StudentController {
-    private final StudentService studentService;
-    private final List<Validator> validators = new LinkedList<>();
 
-    public StudentController(StudentService studentService, ValidateNullable validateNullabling, ValidateNotAllowedWords validateNotAllowedWords, ValidateAlredyUsedEmail validateAlredyUsedEmail) {
-        validators.add(validateNullabling);
-        validators.add(validateNotAllowedWords);
-        validators.add(validateAlredyUsedEmail);
-        this.studentService = studentService;
-    }
+    private final StudentService studentService;
+
+    private final ValidatorService validatorService;
 
     @GetMapping("/students")
     public String listStudents(Model model) {
@@ -41,7 +33,7 @@ public class StudentController {
 
     @PostMapping("/students")
     public String saveStudent(@ModelAttribute("student") Student student) {
-        validators.forEach(x -> x.execute(student));
+        validatorService.executeAll(student);
         studentService.saveStudent(student);
         return "redirect:/students";
     }
