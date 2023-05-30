@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class StudentServiceImpl implements StudentService {
+
     private StudentRepository studentRepository;
     @Override
     public List<Student> getAllStudents() {
